@@ -26,6 +26,7 @@ public class FuncionarioController {
         return this.funcionarioRepository.findById(funcionarioId);
     }
 
+    /*
     @PostMapping("/cadastrar")
     public Funcionario salvarFuncionario(@RequestBody Funcionario funcionario){
         return funcionarioRepository.save(funcionario);
@@ -34,7 +35,7 @@ public class FuncionarioController {
     @DeleteMapping("/deletar/{id}")
     public void deletarFuncionario(@PathVariable(value = "id") Long funcionarioId){
         funcionarioRepository.deleteById(funcionarioId);
-    }
+    }*/
 
 
     @PutMapping("/editar")

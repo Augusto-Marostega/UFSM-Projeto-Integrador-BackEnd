@@ -25,7 +25,7 @@ public class LoginController {
     @PostMapping("/cliente")
     public Cliente loginCliente(@RequestBody UsuarioLogin usuarioLogin) {
 
-        System.out.println(usuarioLogin.getNomeUsuario() + usuarioLogin.getSenha());
+        //System.out.println(usuarioLogin.getNomeUsuario() + usuarioLogin.getSenha());
         return clienteRepository.findByNomeUsuarioAndSenha(usuarioLogin.getNomeUsuario(), usuarioLogin.getSenha());
     }
 

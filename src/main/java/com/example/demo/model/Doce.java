@@ -51,7 +51,20 @@ public class Doce implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "ingrediente_id"))
     private List<Ingrediente> ingredientes = new ArrayList<>();
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "doce", fetch = FetchType.LAZY)
+    private List<Encomenda_Doce> encomenda_doces = new ArrayList<>();
+
+
     public Doce() {
+    }
+
+    public List<Encomenda_Doce> getEncomenda_doces() {
+        return encomenda_doces;
+    }
+
+    public void setEncomenda_doces(List<Encomenda_Doce> encomenda_doces) {
+        this.encomenda_doces = encomenda_doces;
     }
 
     public long getId() {

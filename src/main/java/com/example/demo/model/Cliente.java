@@ -4,6 +4,8 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "cliente")
@@ -32,9 +34,14 @@ public class Cliente implements Serializable {
     @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true )
+    private List<Encomenda> encomendas = new ArrayList<>();
+
 
     public Cliente() {
     }
+
+
 
     public long getId() {
         return id;
@@ -74,5 +81,23 @@ public class Cliente implements Serializable {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public List<Encomenda> getEncomendas() {
+        return encomendas;
+    }
+
+    public void setEncomendas(List<Encomenda> encomendas) {
+        this.encomendas = encomendas;
+    }
+
+    public void addencomendas(Encomenda encomenda){
+        encomendas.add(encomenda);
+        encomenda.setCliente(this);
+    }
+
+    public void removeEncomendass(Encomenda encomenda){
+        encomendas.remove(encomendas);
+        encomenda.setCliente(null);
     }
 }

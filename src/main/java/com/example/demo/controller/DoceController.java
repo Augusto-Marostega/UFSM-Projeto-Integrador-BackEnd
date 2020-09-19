@@ -25,13 +25,12 @@ public class DoceController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Doce> getDoceeById(@PathVariable(value = "id") Long doceId){
+    public Optional<Doce> getDoceById(@PathVariable(value = "id") Long doceId){
         return this.doceRepository.findById(doceId);
     }
 
     @PostMapping("/cadastrar")
     public Doce salvarDoce(@RequestBody Doce doce){
-        System.out.println(doce.getNome()+ ' '+ doce.getIngredientes().get(0).getDescricao());
         return doceRepository.save(doce);
     }
 
